@@ -39,8 +39,6 @@ INSTALLED_APPS = [
     'todoapp.apps.TodoappConfig',
 ]
 
-DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
-
 CORS_ORIGIN_ALLOW_ALL = True
 
 MIDDLEWARE = [
@@ -52,10 +50,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
-
-STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 django_heroku.settings(locals())
 
@@ -131,7 +126,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 
 PORT = os.getenv("PORT", default="8000")
 # SECURITY WARNING: don't run with debug turned on in production!
