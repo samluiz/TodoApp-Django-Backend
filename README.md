@@ -1,4 +1,4 @@
-# TodoApp Backend usando Django
+# REST API usando Django
 
 - API contendo um CRUD básico para adicionar, atualizar, listar e deletar tarefas
 
