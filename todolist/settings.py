@@ -134,4 +134,4 @@ PORT = os.getenv("PORT", default="8000")
 
 DEBUG = os.environ.get('DJANGO_DEBUG', '') != 'False'
 
-ALLOWED_HOSTS = ["todoapp-datacake.herokuapp.com", "127.0.0.1"]
+ALLOWED_HOSTS = ["todolist-datacake.herokuapp.com", "127.0.0.1"]
