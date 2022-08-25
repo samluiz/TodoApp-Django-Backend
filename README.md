@@ -1,13 +1,13 @@
 # REST API usando Django
 
-- API contendo um CRUD básico para adicionar, atualizar, listar e deletar tarefas
+- API contendo um CRUD básico para adicionar, listar, atualizar e deletar tarefas (POST, GET, PUT, DELETE)
 
 # Endpoints
 
-- /tasks/ (serve para listar todas as tarefas e para adicionar e atualizar os registros via JSON)
-- /tasks/{id} (serve para listar uma tarefa específica ou deletar utilizando o ID na url)
+- /tasks/ (serve para listar todas as tarefas (GET) e para adicionar (POST) e atualizar (PUT) os registros via JSON)
+- /tasks/{id} (serve para listar uma tarefa específica (GET) ou deletar (DELETE) utilizando o ID na url)
 
-# Ferramentas para testar
+# Ferramentas para testar os endpoints
 
 - Postman
 - Insomnia
