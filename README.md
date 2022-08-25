@@ -7,6 +7,11 @@
 - /tasks/ (serve para listar todas as tarefas e para adicionar e atualizar os registros via JSON)
 - /tasks/{id} (serve para listar uma tarefa específica ou deletar utilizando o ID na url)
 
+# Ferramentas para testar
+
+- Postman
+- Insomnia
+
 # Deploy da API na nuvem
 
 https://todolist-datacake.herokuapp.com/
