@@ -26,14 +26,6 @@ import os
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-*)sb*qr-fuo$1km^nuok3$@za=$e8*jp=+slo+wxlhc=@4#8&d'
 
-PORT = os.getenv("PORT", default="8000")
-# SECURITY WARNING: don't run with debug turned on in production!
-#  DEBUG = True
-
-DEBUG = os.environ.get('DJANGO_DEBUG', '') != 'False'
-
-ALLOWED_HOSTS = ["todoapp-datacake.herokuapp.com", "127.0.0.1"]
-
 
 # Application definition
 
@@ -138,3 +130,11 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+PORT = os.getenv("PORT", default="8000")
+# SECURITY WARNING: don't run with debug turned on in production!
+#  DEBUG = True
+
+DEBUG = os.environ.get('DJANGO_DEBUG', '') != 'False'
+
+ALLOWED_HOSTS = ["todoapp-datacake.herokuapp.com", "127.0.0.1"]
