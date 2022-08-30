@@ -1,33 +1,45 @@
 from django.shortcuts import render
-from django.views.decorators.csrf import csrf_exempt
+from rest_framework.decorators import api_view
+from rest_framework import status
 from rest_framework.parsers import JSONParser
 from django.http.response import JsonResponse
 from .models import Task
 from .serializers import TaskSerializer
 
-
-@csrf_exempt
-def taskApi(request, id=0):
+@api_view(['GET', 'POST', 'DELETE'])
+def taskApi(request):
   if request.method == 'GET':
     tasks = Task.objects.all()
     tasks_serializer = TaskSerializer(tasks, many=True)
     return JsonResponse(tasks_serializer.data, safe=False)
+
   elif request.method == 'POST':
     task_data = JSONParser().parse(request)
-    task_serializer = TaskSerializer(data=task_data)
+    task_serializer = TaskSerializer(data = task_data)
     if task_serializer.is_valid():
       task_serializer.save()
-      return JsonResponse("Added Successfully!", safe=False)
-    return JsonResponse("Failed to Add.", safe=False)
+      return JsonResponse(task_serializer.data, status=status.HTTP_201_CREATED)
+    return JsonResponse(task_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+@api_view(['GET', 'PUT', 'DELETE'])
+def taskApiFiltered(request, id):
+  try:
+    task = Task.objects.get(pk=id)
+  except Task.DoesNotExist():
+    return JsonResponse({'message': 'This task does not exist'}, status=status.HTTP_404_NOT_FOUND)
+
+  if request.method == 'GET':
+    task_serializer = TaskSerializer(task)
+    return JsonResponse(task_serializer.data)
+
   elif request.method == 'PUT':
     task_data = JSONParser().parse(request)
-    task = Task.objects.get(taskId=task_data['taskId'])
-    task_serializer = TaskSerializer(task, data=task_data)
+    task_serializer = TaskSerializer(task, data = task_data)
     if task_serializer.is_valid():
       task_serializer.save()
-      return JsonResponse("Updated Successfully!", safe=False)
-    return JsonResponse("Failed to Update.", safe=False)
-  elif request.method == 'DELETE':
-    task = Task.objects.get(taskId=id)
-    task.delete()
-    return JsonResponse("Deleted Successfully!", safe=False)
+      return JsonResponse(task_serializer.data)
+    return JsonResponse(task_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+  elif request.method == 'DELETE': 
+        task.delete() 
+        return JsonResponse({'message': 'Task deleted successfully!'}, status=status.HTTP_204_NO_CONTENT)

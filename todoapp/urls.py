@@ -1,7 +1,7 @@
 from django.urls import path, re_path
-from .views import taskApi
+from .views import taskApi, taskApiFiltered
 
 urlpatterns = [
-  re_path(r'^tasks/$', taskApi),
-  re_path(r'^tasks/([0-9]+)$', taskApi)
+  path('tasks/', taskApi, name="tasks"),
+  path('tasks/<int:id>', taskApiFiltered, name="taskId")
 ]
