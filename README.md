@@ -1,4 +1,4 @@
-# REST API usando Django
+# REST API usando Django e PostgreSQL
 
 - API contendo um CRUD básico para adicionar, listar, atualizar e deletar tarefas (POST, GET, PUT, DELETE)
 
@@ -12,6 +12,6 @@
 - Postman
 - Insomnia
 
-# Deploy da API na nuvem
+# Deploy da API na nuvem (heroku)
 
 https://todolist-datacake.herokuapp.com/
